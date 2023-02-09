@@ -22,5 +22,5 @@ print("Views: ", yt.views)
 #
 yd = yt.streams.get_highest_resolution()
 
-#TODO Get to download to specific path
-yd.download(output_path="C:\Users\isali\Downloads")
+#Downloads video to specified path
+yd.download(output_path:=r'C:\Users\isali\Downloads')
