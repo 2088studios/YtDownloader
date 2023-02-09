@@ -2,7 +2,6 @@
 # Library Here -> https://pytube.io/en/latest/
 
 #TODO Figure out how to choose download quality (from ???-4k)
-#TODO Figure out how to merge audio and video again IF THIS HAPPENS
 #TODO Figure out how to get this into an executable file
 
 #imports
