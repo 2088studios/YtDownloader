@@ -1,6 +1,6 @@
 **YouTube Video Downloader**
 
-This program downloads videos at the requested quality chosen by the given URL.
+This program downloads videos chosen by the given URL at the requested quality
 
 [Pytube Library Here](https://pytube.io/en/latest/)
 
@@ -9,4 +9,4 @@ This program downloads videos at the requested quality chosen by the given URL.
 
 **Enjoy! :)**
 
-*Last updated ~ 2/9/2023*
+*Last updated ~ 2/11/2023*
