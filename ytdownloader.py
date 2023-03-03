@@ -2,7 +2,7 @@
 
 # TODO How to choose download quality (from ???-4a)
 # TODO Run on windows[X] and macos[]
-# TODO Add exception blocas for downloaded video
+# TODO Add exception blocks for downloaded video
 # Video already downloaded[]
 #
 # TODO See if You can download audio and not video
@@ -15,23 +15,25 @@
 from pytube import YouTube
 from pathlib import Path
 import time
+import os
 
 download_path = str(Path.home() / "Downloads")
 
 
 def main():
     print("Hello and welcome to YtDownloader! :)")
-    getURL()
+    getUrl()
 
 
-def getURL():
+def getUrl():
     # Gets video URL from user
-    url = 'a'
+    url = None
 
-    # TODO add script if a URL insn't provided (close but can still breaa if input is just http:/)
-    while not url.lower().startswith("https://www.youtube.com/"):
-        url = input(
-            'Please input a valid video URL "https://www.youtube.com/..."\n')
+    # TODO add script if a URL isn't provided (close but can still break if input is just http:/)
+    url = input(
+        'Please input a valid video URL "https://www.youtube.com/..."\n')
+    if url == None:
+        getUrl()
 
     # Creates YouTube object and assigns users' Downloads folder path
     video = YouTube(url)
@@ -58,17 +60,25 @@ def chooseDownload(video):
 
 
 def videoAndAudio(video):
+    print("DOWNLOADING...\n")
     # Gets highest quality video (up to 720 as of now) and then downloads it
-    dv = video.streams.get_highest_resolution()
-    dv.download(download_path)
+    fullVideo = video.streams.get_highest_resolution()
+    fullVideo.download(download_path)
 
     print("Video has been downloaded successfully!")
     anotherVideo()
 
 
 def audioOnly(video):
-    da = video.streams.get_audio_only()
-    da.download(download_path)
+    print("DOWNLOADING...\n" "This may take a while :)")
+    audio = video.streams.get_audio_only()
+
+    # New code
+    audioOut = audio.download(download_path)
+    base, ext = os.path.splitext(audioOut)
+    new_file = base + '.mp3'
+    os.rename(audioOut, new_file)
+    # End of new code
     print("Audio has been downloaded successfully!")
     anotherVideo()
 
@@ -78,7 +88,7 @@ def anotherVideo():
 
     # User wants to download another
     if (a.lower() == 'y'):
-        getURL()
+        getUrl()
 
     # User doesn't want to download another
     elif (a.lower() == 'n'):
