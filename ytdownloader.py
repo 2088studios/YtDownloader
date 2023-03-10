@@ -63,7 +63,7 @@ def videoAndAudio(video):
     print("DOWNLOADING...\n")
     # Gets highest quality video (up to 720 as of now) and then downloads it
     fullVideo = video.streams.get_highest_resolution()
-    fullVideo.download(download_path)
+    fullVideo.download(output_path=download_path, filename=video.title+"-video.mp4")
 
     print("Video has been downloaded successfully!")
     anotherVideo()
